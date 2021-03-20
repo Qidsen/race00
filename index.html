@@ -24,11 +24,17 @@
 		<div class="item" onclick="mc()">MC</div>
 		<div class="item" onclick="mr()">MR</div>
 		<div class="item" onclick="madd()">M+</div>
-		<div class="item" onclick="msubtract()">M-</div>
+		<div class="item" onclick="msub()">M-</div>
 
-		<div class="item" onclick="conventer()">conv</div>
+		<div class="item" onclick="conventer()">convert</div>
 		<div class="item" onclick="fact()">x!</div>
 		<div class="item" onclick="log('lg')">lg</div>
+		<div class="item" onclick="log('ln')">ln</div>
+		<div class="item" onclick="operation('sqr')">x<span class="upper">2</div>
+
+		<div class="item" onclick="bin()">bin</div>
+		<div class="item" onclick="dec()">dec</div>
+		<div class="item" onclick="hex()">hex</div>
 		<div class="item" onclick="insert('(')">(</div>
 		<div class="item" onclick="insert(')')">)</div>
 
@@ -62,7 +68,58 @@
 		<div class="item" onclick="insert('.')">,</div>
 		<div class="item equal" onclick="equal()">=</div>
 		
+		
+	</div>
+	
+	<div class="container_conv">
 
+		<div class='container_w'>
+
+			<div class="conv Weight" onclick="weight()"><label>Weight</label></div>
+			<div class="conv Length" onclick="length()"><label>Length</label></div>
+			<div class="conv Area" onclick="area()"><label>Area</label></div>
+		</div>
+
+		<div class='container_conv_w length_c'>
+			<div class="conv Metres" onclick="metres()">Metres</div><div class="conv non">hh</div>
+			<div class="conv Kilometres" onclick="kilometres()">Kilometres</div><div class="conv non">hh</div>
+			<div class="conv Centimetres" onclick="centimetres()">Centimetres</div><div class="conv non">hh</div>
+			
+		</div>
+
+		<div class='container_conv_w widht_c'>
+			<div class="conv" onclick="metres()">Grams</div><div class="conv non">hh</div>
+			<div class="conv" onclick="kilometres()">Kilograms</div><div class="conv non">hh</div>
+			<div class="conv" onclick="centimetres()">Pounds</div><div class="conv non">hh</div>
+			<div class="conv" onclick="centimetres()">Ton</div><div class="conv non">hh</div>
+			
+		</div>
+
+		<div class='container_conv_w area_c'>
+			<div class="conv m" onclick="m()">m<span class="upper">2</div><div class="conv non">hh</div>
+			<div class="conv km" onclick="km()">km<span class="upper">2</div><div class="conv non">hh</div>
+			<div class="conv acres" onclick="acres()">acres</div><div class="conv non">hh</div>
+			
+		</div>
+
+		<div class="nums">
+			<div class="conv" onclick="insert(7)">7</div>
+			<div class="conv" onclick="insert(8)">8</div>
+			<div class="conv" onclick="insert(9)">9</div>
+			<div class="conv non"></div>
+
+			
+			<div class="conv" onclick="insert(4)">4</div>
+			<div class="conv" onclick="insert(5)">5</div>
+			<div class="conv" onclick="insert(6)">6</div>
+			<div class="conv" onclick="insert('.')">.</div>
+
+			
+			<div class="conv" onclick="insert(1)">1</div>
+			<div class="conv" onclick="insert(2)">2</div>
+			<div class="conv" onclick="insert(3)">3</div>
+			<div class="conv" onclick="calc()">calc</div>
+		</div>
 	</div>
 
 	<script src="js/script.js"></script>

@@ -3,19 +3,29 @@ let history = document.querySelector('.history')
 let counter = 0  // для локалстореджа
 
 function insert(num) {
+	if(input.textContent.length === 26)
+		return
+	if(input.textContent == '0.'){
+		input.textContent = "0." + num
+		return
+	}
+	if(num === '.' && input.textContent == 0){
+		input.textContent = "0."
+		return
+	}
 	if(num === '.'){
 		let number = input.textContent
 		for (let i = number.length; i >= 0; i--){
-			if(number[i] == '+' || number[i] == '-' || number[i] == '*' || number[i] == '/')
+			if(number[i] == '+' || number[i] == '-' || number[i] == '*' || number[i] == '/'){
 				number = number.slice(i)
+			}
 		}
 		if(number.includes('.'))
 			return
-
-		if(input.textContent == 0){
-			input.textContent = "0."
-			return
-		}
+	}
+	if(input.textContent === 0){
+		input.textContent = "0."
+		return
 	}
 	if(input.textContent == 0 || input.textContent == 'Infinity' || input.textContent == '-Infinity') {
 		input.textContent = ""
@@ -79,9 +89,15 @@ function fact() {
 	input.textContent = factorial(+eval(input.textContent))
 }
 
-function log() {
-	history.textContent = 'lg(' + input.textContent + ')'
-	input.textContent = Math.log10(eval(input.textContent)).toFixed(8)
+function log(name) {
+	if(name == 'lg'){
+		history.textContent = 'lg(' + input.textContent + ')'
+		input.textContent = Math.log10(eval(input.textContent)).toFixed(8)
+	}
+	if(name == 'ln'){
+		history.textContent = 'ln(' + input.textContent + ')'
+		input.textContent = Math.log(eval(input.textContent)).toFixed(8)
+	}
 }
 
 document.querySelector('.type').addEventListener('click', function() {
@@ -122,11 +138,6 @@ function invert() {
 	input.textContent = -eval(input.textContent)
 }
 
-//for memory
-
-let memory
-let clipboard = []
-
 function ms() {
     memory = parseFloat(input.textContent)
     return memory
@@ -153,7 +164,7 @@ function madd() {
     }
 }
 
-function msubtract() {
+function msub() {
     const current = parseFloat(input.textContent)
     if (isNaN(memory) || memory == "") {
         console.error("Memory is empty")
@@ -167,25 +178,122 @@ function msubtract() {
 }
 
 function conventer(){
-	console.log(type)
-	let items = document.querySelectorAll("div.item")
+	document.querySelector(".container").style = 'display: none'
+	document.querySelector(".container_conv").style  = 'display: grid'
+	document.querySelector(".conv").style = 'display: grid'
 
-	for(let i of items){
-		i.style = 'display: none'
-	}
+	length()	
 }
+
+function calc(){
+	document.querySelector(".container_conv").style = 'display: none'
+	document.querySelector(".container").style  = 'display: grid'
+}
+
+function metres(){
+	document.querySelector(".Metres").style = 'color: #ff8800'
+	document.querySelector(".Centimetres").style = 'color: #999999'
+	document.querySelector(".Kilometres").style = 'color: #999999'
+}
+
+function centimetres(){
+	document.querySelector(".Metres").style = 'color: #999999'
+	document.querySelector(".Kilometres").style = 'color: #999999'
+	document.querySelector(".Centimetres").style = 'color: #ff8800'
+}
+
+function  kilometres(){
+	document.querySelector(".Centimetres").style = 'color: #999999'
+	document.querySelector(".Kilometres").style = 'color: #ff8800'
+	document.querySelector(".Metres").style = 'color: #999999'
+}
+
+function  kilometres(){
+	document.querySelector(".Centimetres").style = 'color: #999999'
+	document.querySelector(".Kilometres").style = 'color: #ff8800'
+	document.querySelector(".Metres").style = 'color: #999999'
+}
+function weight(){
+	document.querySelector('div.widht_c').style = 'display: grid'
+	document.querySelector('div.area_c').style = 'display: none'
+	document.querySelector('div.length_c').style = 'display: none'
+	
+	document.querySelector(".Weight").style = 'color: #ff8800'
+	document.querySelector(".Length").style = 'color: #535353'
+	document.querySelector(".Area").style = 'color: #535353'
+}
+
+function metres(){
+	document.querySelector(".Metres").style = 'color: #ff8800'
+	document.querySelector(".Centimetres").style = 'color: #999999'
+	document.querySelector(".Kilometres").style = 'color: #999999'
+}
+
+function centimetres(){
+	document.querySelector(".Metres").style = 'color: #999999'
+	document.querySelector(".Kilometres").style = 'color: #999999'
+	document.querySelector(".Centimetres").style = 'color: #ff8800'
+}
+
+function  kilometres(){
+	document.querySelector(".Centimetres").style = 'color: #999999'
+	document.querySelector(".Kilometres").style = 'color: #ff8800'
+	document.querySelector(".Metres").style = 'color: #999999'
+}
+
+function length(){
+	document.querySelector('div.length_c').style = 'display: grid'
+	document.querySelector('div.area_c').style = 'display: none'
+	document.querySelector('div.widht_c').style = 'display: none'
+
+	document.querySelector(".Length").style = 'color: #ff8800'
+	document.querySelector(".Weight").style = 'color: #434343'
+	document.querySelector(".Area").style = 'color: #434343'
+	metres()
+}
+
+
+function m(){
+	document.querySelector(".m").style = 'color: #ff8800'
+	document.querySelector(".acres").style = 'color: #999999'
+	document.querySelector(".km").style = 'color: #999999'
+}
+
+function km(){
+	document.querySelector(".m").style = 'color: #999999'
+	document.querySelector(".acres").style = 'color: #999999'
+	document.querySelector(".km").style = 'color: #ff8800'
+}
+
+function acres(){
+	document.querySelector(".m").style = 'color: #999999'
+	document.querySelector(".acres").style = 'color: #ff8800'
+	document.querySelector(".km").style = 'color: #999999'
+}
+
+
+function area(){
+	document.querySelector('div.area_c').style = 'display: grid'
+	document.querySelector('div.widht_c').style = 'display: none'
+	document.querySelector('div.length_c').style = 'display: none'
+	
+	document.querySelector(".Area").style = 'color: #ff8800'
+	document.querySelector(".Length").style = 'color: #434343'
+	document.querySelector(".Weight").style = 'color: #434343'
+	m()
+}
+
+
 
 function weightConverterP(valNum) {
     document.getElementById("Grams").value = valNum / 0.0022046;
     document.getElementById("Kilograms").value = valNum / 2.2046;
     document.getElementById("Ton").value = valNum * 0.00045359237;
-
 }
 
 function weightConverterG(valNum) {
     document.getElementById("Pounds").value = valNum * 0.0022046;
     document.getElementById("Kilograms").value = valNum / 1000;
-
 }
 
 function weightConverterK(valNum) {
@@ -224,8 +332,24 @@ function areaConverterA(valNum) {
     document.getElementById("m").value = valNum / 0.00024711;
 
 }
-	
+
 function areaConverterM(valNum) {
     document.getElementById("acres").value = valNum * 0.000247;
     document.getElementById("km").value = valNum / 1000000;
+}
+
+
+function hex() {
+	let inp = eval(input.textContent);
+	let hex = inp.toString(16);
+	input.textContent = String(hex.toUpperCase());
+}
+
+function bin() {
+	let binar = parseInt(input.textContent);
+	input.textContent = binar.toString(2);
+}
+
+function dec() {
+	input.textContent = parseInt(input.textContent, 2);
 }
